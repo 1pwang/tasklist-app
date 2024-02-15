@@ -1,14 +1,15 @@
-const taskController = (taskService) => {
-    return {
-    getTask: async (res, req) => {
+class TaskController {
+    constructor(taskService) {
+        this.taskService = taskService
+    }
+    async getTask(req, res) {
         try {
-            const tasks = await taskService.getTasks()
+            const tasks = await this.taskService.getTasks()
             return res.json(tasks)
         } catch (error) {
-            res.status(500).json({error: 'Internal error'})
+           return res.status(500).json({error: 'Internal error'})
         }
-    }
     };
 };
 
-module.exports = taskController;
+module.exports = TaskController;
