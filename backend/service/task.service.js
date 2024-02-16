@@ -1,9 +1,11 @@
-const taskService = (repository) => {
-    return {
-        getTasks: async () => {
-            return await repository.getTasks();
-        }
+const TaskRepository = require('../repository/task.repository')
+class TaskService {
+    constructor() {
+        this.taskRepository = new TaskRepository();
+    }
+    async getTasks() {
+        return await this.taskRepository.getTasks();
     }
 }
 
-module.exports = taskService;
+module.exports = TaskService;

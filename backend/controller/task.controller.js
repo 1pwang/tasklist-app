@@ -1,15 +1,15 @@
+const TaskService = require('../service/task.service')
+
 class TaskController {
-    constructor(taskService) {
-        this.taskService = taskService
-    }
-    async getTask(req, res) {
+    async getTasks(req, res) {
+        const taskService = new TaskService();
+        const tasks = await taskService.getTasks();
         try {
-            const tasks = await this.taskService.getTasks()
-            return res.json(tasks)
+            return res.json(tasks);
         } catch (error) {
-           return res.status(500).json({error: 'Internal error'})
+                return res.status(500).json({error: 'Internal Server Error'});
         }
-    };
-};
+    }
+}
 
 module.exports = TaskController;

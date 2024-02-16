@@ -1,7 +1,7 @@
-const TaskModel = require('../models/task');
+const TaskModel = require('../models/task.model');
 
-module.exports = {
-    getTask: async () => {
+class TaskRepository {
+    async getTasks(){
         try {
             const tasks = await TaskModel.find().exec();
             return tasks;
@@ -10,3 +10,5 @@ module.exports = {
         }
     }
 }
+
+module.exports = TaskRepository;
