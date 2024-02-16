@@ -9,6 +9,16 @@ class TaskRepository {
             throw new Error('Error retrieving tasks', error.message);
         }
     }
+
+    async createTask(task, status){
+        try {
+            const newTask = new TaskModel({task, status});
+            const savedTask = await newTask.save();
+            return savedTask;
+        } catch (error){
+            throw new Error('Unable to create task')
+        }
+    }
 }
 
 module.exports = TaskRepository;

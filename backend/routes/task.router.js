@@ -9,5 +9,6 @@ const taskService = new TaskService(new TaskRepository())
 const taskController = new TaskController(taskService);
 
 router.get('/tasks', taskController.getTasks);
+router.post('/create-task', taskController.createTask);
 
 module.exports = router;

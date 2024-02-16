@@ -6,6 +6,10 @@ class TaskService {
     async getTasks() {
         return await this.taskRepository.getTasks();
     }
+
+    async createTask(task, status) {
+        return await this.taskRepository.createTask(task, status)
+    }
 }
 
 module.exports = TaskService;
