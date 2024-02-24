@@ -27,6 +27,19 @@ class TaskRepository {
             throw new Error('Unable to delete task')
         }
     }
+
+    async updateTask(id, task) {
+        try {
+            const updatedTask = await TaskModel.findOneAndUpdate(
+                { _id: id },
+                { $set: task },
+                { new: true }
+            );
+            return updatedTask;
+        } catch (error) {
+            throw new Error('Unable to update task');
+        }
+    }
 }
 
 module.exports = TaskRepository;

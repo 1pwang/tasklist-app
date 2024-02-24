@@ -33,6 +33,18 @@ class TaskController {
             return res.status(500).json({error: 'Internal Server Error'})
         }
     }
+
+    async updateTask(req, res){
+        try {
+            const { id } = req.params;
+            const task = req.body;
+            const taskService = new TaskService();
+            const updatedTask = await taskService.updateTask(id, task)
+            res.json(updatedTask)
+        } catch(error) {
+            res.status(500).json({error: 'Internal Server error'})
+        }
+    }
 }
 
 module.exports = TaskController;

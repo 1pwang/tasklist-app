@@ -11,5 +11,6 @@ const taskController = new TaskController(taskService);
 router.get('/tasks', taskController.getTasks);
 router.post('/create-task', taskController.createTask);
 router.delete('/delete-task/:id', taskController.deleteTask)
+router.put('/update-task/:id', taskController.updateTask)
 
 module.exports = router;

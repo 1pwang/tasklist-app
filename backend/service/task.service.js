@@ -12,6 +12,18 @@ class TaskService {
     async deleteTask(id) {
         return await this.taskRepository.deleteTask(id)
     }
+
+    async updateTask(id, task) {
+        if(!task){
+            throw new Error("You must have a task")
+        }
+
+        try {
+            return await this.taskRepository.updateTask(id, task )
+        } catch (error) {
+            throw new Error("Unable to update task")
+        }
+    }
 }
 
 module.exports = TaskService;
